@@ -28,25 +28,15 @@ class IndexController extends Action{
                 foreach ($_POST as $key => $value) {
                     $$key = $value;
                 }
-                echo "Cheguei aqui";
                 $usuario = Container::getModel('Usuario');
                 
                 $usuario->__set('nome', $nome);
                 $usuario->__set('email', $email);
                 $usuario->__set('senha', md5($senha));
-
-                echo "Cheguei aqui 2";
-                echo '<pre>';
-                print_r($_POST);
-                echo '</pre>';
-                
                 if($usuario->validarCadastro() AND count($usuario->getUsuarioPorEmail()) == 0){
-                    echo "cheguei aqui 3";
                     $usuario->salvar();
                     $this->render('cadastro');
                 }else{
-                    echo "cheguei aqui 4";
-                    exit;
                     $this->view->usuario = array(
                         'nome' => $_POST['nome'],
                         'email' => $_POST['email'],

@@ -39,19 +39,14 @@ class Usuario extends Model{
     }
 
     public function validarCadastro(){
-        echo "<br> Cheguei aqui Cadastro <br>";
         $valido = true;
-        echo "Teste valor de nome:". strlen($this->__get('nome'));
-        if(strlen($this->__get('nome') < 3)){
-            echo "<br> Entreu if nome <br>";
+        if(strlen($this->__get('nome')) < 3){
             $valido = false;
         }
-        if(strlen($this->__get('email') < 3)){
-            echo "<br> Entreu if email <br>";
+        if(strlen($this->__get('email')) < 3){
             $valido = false;
         }
-        if(strlen($this->__get('senha') < 3)){
-            echo "<br> Entreu if senha <br>";
+        if(strlen($this->__get('senha')) < 3){
             $valido = false;
         }
         return $valido;
